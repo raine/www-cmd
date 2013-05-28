@@ -1,13 +1,17 @@
 www-cmd
 =======
 
-## Dependencies
+### Dependencies
 
 * NodeJS
 * npm
 
-## Quick Start
+### Quick Start
 
-Install dependencies
+Install dependencies:
 
     npm install
+    
+Run:
+
+    node run.js
