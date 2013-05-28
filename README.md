@@ -1,17 +1,19 @@
 www-cmd
 =======
 
-### Dependencies
+![](http://raneksi.github.io/www-cmd/screenshot.png)
 
-* NodeJS
+## Dependencies
+
+* NodeJS (>= v0.8.x)
 * npm
 
-### Quick Start
+## Quick Start
 
-Install dependencies:
+Install the dependencies:
 
     npm install
     
-Run:
+Run the server:
 
     node run.js
