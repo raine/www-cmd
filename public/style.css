@@ -1,8 +1,13 @@
 .wrap {
   margin: 60px auto;
-  max-width: 400px;
+  max-width: 700px;
 }
 
 .stdout {
   display: none;
+}
+
+.btn {
+  margin: auto;
+  width: 400px;
 }
