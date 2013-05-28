@@ -1,4 +1,8 @@
-.well {
+.wrap {
   margin: 60px auto;
   max-width: 400px;
+}
+
+.stdout {
+  display: none;
 }

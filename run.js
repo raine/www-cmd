@@ -44,14 +44,18 @@ app.post('/execute/:id', function(req, res) {
 
 	console.log('Running command `' + cmd.command + '`');
 
+	var resp = "$ " + cmd.command + "\n";
+
 	var exec = require('child_process').exec;
 	exec(cmd.command, function(err, stdout) {
 		if (err) {
+			resp += err.toString();
 			console.log(err.toString());
 		} else {
+			resp += stdout;
 			console.log(stdout);
 		}
-	});
 
-	res.send(200);
+		res.send(resp);
+	});
 });

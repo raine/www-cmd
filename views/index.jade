@@ -8,6 +8,10 @@ html
     script(src='/www-cmd.js')
 
   body
-    .well
-      each button in commands
-        button.btn.btn-large.btn-block(data-command-id=button.id)= button.text
+    .wrap
+      .well
+        each button in commands
+          button.btn.btn-large.btn-block(data-command-id=button.id)= button.text
+
+      .stdout
+        pre
