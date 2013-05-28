@@ -1,0 +1,12 @@
+doctype 5
+html
+  head
+    title= "www-cmd"
+    script(src='/jquery.min.js')
+    script(src='/www-cmd.js')
+
+  body
+    block content
+      each button in commands
+        button(data-command-id=button.id)= button.text
+
