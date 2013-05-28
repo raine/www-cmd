@@ -18,6 +18,6 @@ module.exports = {
 		{
 			text: 'fubar',
 			command: 'bad_command'
-		},
+		}
 	]
 };

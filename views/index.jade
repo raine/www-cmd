@@ -2,11 +2,12 @@ doctype 5
 html
   head
     title= "www-cmd"
+    link(rel='stylesheet', href='/bootstrap.css')
+    link(rel='stylesheet', href='/style.css')
     script(src='/jquery.min.js')
     script(src='/www-cmd.js')
 
   body
-    block content
+    .well
       each button in commands
-        button(data-command-id=button.id)= button.text
-
+        button.btn.btn-large.btn-block(data-command-id=button.id)= button.text
