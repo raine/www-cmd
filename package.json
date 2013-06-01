@@ -8,5 +8,8 @@
 		"underscore": "latest",
 		"coffee-script": "~1.6.2",
 		"cliff": "latest"
+	},
+	"scripts": {
+		"start": "coffee server.coffee"
 	}
 }
