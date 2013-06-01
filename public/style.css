@@ -10,4 +10,6 @@
 .btn {
   margin: auto;
   width: 400px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
