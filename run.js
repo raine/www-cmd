@@ -1,13 +1,14 @@
+var coffee  = require("coffee-script");
 var express = require('express');
 var http    = require('http');
 var path    = require('path');
-var config  = require('./config');
 var _       = require('underscore');
 var spawn   = require('child_process').spawn;
-
+var cliff   = require('cliff');
+var config  = require('./config');
 var app = express();
 
-app.configure(function(){
+app.configure(function() {
   app.set('port', process.env.PORT || 8080);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');

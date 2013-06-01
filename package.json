@@ -5,6 +5,7 @@
 	"dependencies": {
 		"express": "3.x.x",
 		"jade": "*",
-		"underscore": "latest"
+		"underscore": "latest",
+		"coffee-script": "~1.6.2"
 	}
 }
