@@ -37,6 +37,7 @@ var commands = config.buttons.map(function(obj, i) {
 console.log('Initialized with commands:');
 console.log(cliff.stringifyObjectRows(
 	commands.map(function(obj) {
+		obj = _.clone(obj);
 		if (_.isFunction(obj.command))
 			obj.command = '[Function]';
 		return obj;
