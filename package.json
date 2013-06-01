@@ -6,6 +6,7 @@
 		"express": "3.x.x",
 		"jade": "*",
 		"underscore": "latest",
-		"coffee-script": "~1.6.2"
+		"coffee-script": "~1.6.2",
+		"cliff": "latest"
 	}
 }
