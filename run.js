@@ -33,6 +33,17 @@ var commands = config.buttons.map(function(obj, i) {
 	return obj;
 });
 
+console.log('Initialized with commands:');
+console.log(cliff.stringifyObjectRows(
+	commands.map(function(obj) {
+		if (_.isFunction(obj.command))
+			obj.command = '[Function]';
+		return obj;
+	}),
+	['text', 'command', 'id'],
+	['red', 'blue', 'green']
+));
+
 app.post('/execute/:id', function(req, res) {
 	var cmdId = +req.params.id;
 	var cmd   = _.findWhere(commands, { id: cmdId });
