@@ -18,4 +18,4 @@ Run the server:
 
     node run.js
 
-Buttons can be configured in `config.js`.
+Buttons can be configured in `config.coffee`.
