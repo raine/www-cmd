@@ -6,7 +6,7 @@ module.exports =
     text    : "Who am I?"
     command : "whoami"
   ,
-    text    : "Ping"
+    text    : "Ping my IP"
     command : (req) ->
       "ping -c1 #{req.ip}"
   ,
