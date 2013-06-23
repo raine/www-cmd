@@ -20,7 +20,12 @@ html
     .wrap
       .well
         each control in controls
-          mixin ctrl(control)
+          - if (_.isArray(control))
+            .controlbox
+              each _control in control
+                mixin ctrl(_control)
+          - else
+            mixin ctrl(control)
 
       .stdout
         pre

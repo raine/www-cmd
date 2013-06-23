@@ -31,6 +31,8 @@ app.configure ->
 app.configure "development", ->
   app.use express.errorHandler()
 
+app.locals._ = _
+
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
 
