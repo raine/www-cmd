@@ -7,8 +7,8 @@ mixin ctrl(control)
       | &nbsp;#{control.label}
   - else if (control.type === 'select')
     select(name=control.opt)
-      each option in control.options
-        option(value=option)= option
+      each option, i in control.options
+        option(value=i)= option
 
 doctype 5
 html

@@ -49,11 +49,17 @@ console.log cliff.stringifyObjectRows commands.map((obj) ->
 
 parseOpts = (opts) ->
   for key, value of opts
-    opts[key] =
-      switch value
-        when 'true'  then true
-        when 'false' then false
-        else value
+    control =  _.findWhere _.flatten(controls), opt: key
+
+    switch control.type
+      when 'checkbox'
+        opts[key] =
+          switch value
+            when 'true'  then true
+            when 'false' then false
+            else value
+      when 'select'
+        opts[key] = control.options[+value]
 
   opts
 
@@ -61,8 +67,6 @@ app.post "/execute/:id", (req, res) ->
   cmdId = +req.params.id
   cmd   = _.findWhere commands, _id: cmdId
   opts  = parseOpts req.body
-
-  console.log "opts", opts
 
   unless cmd
     console.log "Command not found"
