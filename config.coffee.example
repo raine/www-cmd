@@ -22,9 +22,19 @@ module.exports =
     command : (req, opts) ->
       cmd = "host "
       cmd += "-v " if opts.verbose
-      cmd += "google.com"
+      cmd += opts.host
   ,
-    type  : "checkbox"
-    label : "Verbose"
-    opt   : "verbose"
+    [
+      type  : "checkbox"
+      label : "Verbose"
+      opt   : "verbose"
+    ,
+      type    : "select"
+      options : [
+        "google.com"
+        "yahoo.com"
+        "geocities.com"
+      ]
+      opt: "host"
+    ]
   ]
