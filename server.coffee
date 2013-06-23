@@ -80,7 +80,15 @@ app.post "/execute/:id", (req, res) ->
   console.log "Running command `" + command + "`"
   resp = "$ " + command + "\n"
 
-  exec command, (err, stdout) ->
+  exec command, (err, stdout, stderr) ->
+    if err
+      console.log err.stack
+      console.log "Error code: #{err.code}"
+      console.log "Signal received: #{err.signal}"
+
+    console.log "Child Process STDOUT: #{stdout}"
+    console.log "Child Process STDERR: #{stderr}"
+
     if err
       resp += err.toString()
       console.log err.toString()
