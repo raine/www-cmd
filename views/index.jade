@@ -4,14 +4,21 @@ html
     title= "www-cmd"
     link(rel='stylesheet', href='/bootstrap.css')
     link(rel='stylesheet', href='/style.css')
+    script(src='/underscore-min.js')
     script(src='/jquery.min.js')
     script(src='/www-cmd.js')
 
   body
     .wrap
       .well
-        each button in commands
-          button.btn.btn-large.btn-block(data-command-id=button.id)= button.text
+        each control in controls
+          - if (control.type == 'button')
+            button.btn.btn-large.btn-block(data-command-id=control._id)= control.text
+          - if (control.type == 'checkbox')
+            .controlbox
+              label.checkbox
+                input(type='checkbox', name=control.opt)
+                | &nbsp;#{control.label}
 
       .stdout
         pre

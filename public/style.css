@@ -13,3 +13,12 @@
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.controlbox {
+	padding: auto 5px;
+	width: 400px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}

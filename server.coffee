@@ -1,10 +1,17 @@
-express = require("express")
-http    = require("http")
-path    = require("path")
-_       = require("underscore")
+express = require "express"
+http    = require "http"
+path    = require "path"
+_       = require "underscore"
 exec    = require("child_process").exec
-cliff   = require("cliff")
-config  = require("./config")
+cliff   = require "cliff"
+fs      = require "fs"
+coffee  = require "coffee-script"
+config  = require "./config"
+
+fs.readFile "./src/www-cmd.coffee", "utf8", (err, data) ->
+  compiled = coffee.compile data
+  fs.writeFile "./public/www-cmd.js", compiled, (err) ->
+    console.log "compiled."
 
 app = express()
 app.configure ->
@@ -12,6 +19,7 @@ app.configure ->
   app.set "views", __dirname + "/views"
   app.set "view engine", "jade"
   app.use express.logger("dev")
+  app.use express.bodyParser()
   app.use app.router
   app.use express.static(path.join(__dirname, "public"))
 
@@ -20,27 +28,40 @@ app.configure "development", ->
 
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
-  
-commands = config.buttons
-commands.forEach (obj, i) -> obj.id = i
+
+controls = config.controls
+commands = _.where controls, { type: "button" }
+commands.forEach (obj, i) -> obj._id = i
 
 console.log "Initialized with commands:"
 console.log cliff.stringifyObjectRows commands.map((obj) ->
   obj = _.clone(obj)
   obj.command = "[Function]"  if _.isFunction(obj.command)
   obj
-), ["text", "command", "id"], ["red", "blue", "green"]
+), ["text", "command", "_id"], ["red", "blue", "green"]
+
+parseOpts = (opts) ->
+  for key, value of opts
+    opts[key] =
+      switch value
+        when 'true'  then true
+        when 'false' then false
+
+  opts
 
 app.post "/execute/:id", (req, res) ->
   cmdId = +req.params.id
-  cmd   = _.findWhere commands, id: cmdId
+  cmd   = _.findWhere commands, _id: cmdId
+  opts  = parseOpts req.body
+
+  console.log "opts", opts
 
   unless cmd
     console.log "Command not found"
     return res.send 404
 
   command = if _.isFunction(cmd.command)
-    cmd.command(req)
+    cmd.command req, opts
   else
     cmd.command
 
@@ -59,4 +80,4 @@ app.post "/execute/:id", (req, res) ->
 
 app.get "/", (req, res) ->
   res.render "index",
-    commands: commands
+    controls: controls
