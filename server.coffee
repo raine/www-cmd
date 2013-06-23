@@ -6,7 +6,12 @@ exec    = require("child_process").exec
 cliff   = require "cliff"
 fs      = require "fs"
 coffee  = require "coffee-script"
-config  = require "./config"
+
+try
+  config  = require "./config"
+catch e
+  console.log "Can't find the config file config.coffee"
+  process.exit()
 
 fs.readFile "./src/www-cmd.coffee", "utf8", (err, data) ->
   compiled = coffee.compile data
