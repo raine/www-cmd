@@ -5,6 +5,10 @@ mixin ctrl(control)
     label.checkbox
       input(type='checkbox', name=control.opt)
       | &nbsp;#{control.label}
+  - else if (control.type === 'select')
+    select(name=control.opt)
+      each option in control.options
+        option(value=option)= option
 
 doctype 5
 html

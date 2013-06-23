@@ -53,6 +53,7 @@ parseOpts = (opts) ->
       switch value
         when 'true'  then true
         when 'false' then false
+        else value
 
   opts
 
