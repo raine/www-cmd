@@ -21,6 +21,11 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.controlbox:last-child {
+	margin-bottom: 0px;
 }
 
 .controlbox > *:not(:last-child) {
