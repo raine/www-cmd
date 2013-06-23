@@ -15,19 +15,19 @@
 }
 
 .controlbox {
-	padding: auto 5px;
-	width: 400px;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
+  padding: auto 5px;
+  width: 400px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .controlbox:last-child {
-	margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .controlbox > *:not(:last-child) {
-	margin-right: 8px;
+  margin-right: 8px;
 }
