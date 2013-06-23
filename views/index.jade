@@ -1,3 +1,11 @@
+mixin ctrl(control)
+  - if (control.type === 'button')
+    button.btn.btn-large.btn-block(data-command-id=control._id)= control.text
+  - else if (control.type === 'checkbox')
+    label.checkbox
+      input(type='checkbox', name=control.opt)
+      | &nbsp;#{control.label}
+
 doctype 5
 html
   head
@@ -12,13 +20,7 @@ html
     .wrap
       .well
         each control in controls
-          - if (control.type == 'button')
-            button.btn.btn-large.btn-block(data-command-id=control._id)= control.text
-          - if (control.type == 'checkbox')
-            .controlbox
-              label.checkbox
-                input(type='checkbox', name=control.opt)
-                | &nbsp;#{control.label}
+          mixin ctrl(control)
 
       .stdout
         pre
