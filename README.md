@@ -1,7 +1,7 @@
 www-cmd
 =======
 
-![](http://raneksi.github.io/www-cmd/screenshot.png)
+![](http://raneksi.github.io/www-cmd/screenshot1.png)
 
 ## Dependencies
 
