@@ -13,7 +13,7 @@ www-cmd
 Install the dependencies:
 
     npm install
-    
+
 Run the server:
 
     node run.js
